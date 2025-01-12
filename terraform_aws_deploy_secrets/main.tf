@@ -1,8 +1,3 @@
-resource "aws_instance" "ec2_instance" {
-    ami = "ami-01b799c439fd5516a"
-    instance_type = "t2.micro"
-}
-
 resource "aws_s3_bucket" "terraform_state" {
     bucket = "my-terraform-state-james"
     acl    = "private"
