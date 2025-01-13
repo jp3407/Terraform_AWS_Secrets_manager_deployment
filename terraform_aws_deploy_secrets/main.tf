@@ -1,10 +1,17 @@
-resource "aws_s3_bucket" "terraform_state" {
-    bucket = "my-terraform-state-james"
-    acl    = "private"
+resource "aws_s3_bucket" "state-s3" {
+  bucket = "jp-tofu-state-s3"
+}
 
-    versioning {
-        enabled = true
-    }
+resource "aws_s3_bucket_acl" "state-s3" {
+  bucket = aws_s3_bucket.jp-tofu-state-s3.id
+  acl    = "private"
+ }
+
+resource "aws_s3_bucket_versioning" versioning_enabled {
+  bucket = "state-s3.id"
+  versioning_configuration {
+    status = "Enabled"
+  }
 }
 
 data "aws_secretsmanager_secret_version" "database_password" {
