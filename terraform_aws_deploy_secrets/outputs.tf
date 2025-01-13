@@ -1,3 +1,3 @@
 output "bucket_name" {
-    value = aws_s3_bucket.my_bucket.id
+    value = aws_s3_bucket.state-s3.id
 }
